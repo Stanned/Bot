@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PlaceNL Bot
 // @namespace    https://github.com/PlaceNL/Bot
-// @version      27
+// @version      26
 // @description  De bot voor PlaceNL!
 // @author       NoahvdAa
 // @match        https://rplace.tk/*
@@ -10,8 +10,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/Stanned/Bot/raw/master/placenlbot.user.js
-// @downloadURL  https://github.com/Stanned/Bot/raw/master/placenlbot.user.js
+// @updateURL    https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
+// @downloadURL  https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @grant        GM.xmlHttpRequest
@@ -99,7 +99,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
         text: 'Accesstoken ophalen...',
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
-    accessToken = await getAccessToken();
+    // accessToken = await getAccessToken();
     Toastify({
         text: 'Accesstoken opgehaald!',
         duration: DEFAULT_TOAST_DURATION_MS
