@@ -175,7 +175,7 @@ async function refreshTokens() {
 
     let tokens = [];
     for (const cookie of redditSessionCookies) {
-        const response = await fetch("https://www.reddit.com/r/place/", {
+        const response = await fetch("https://rplace.tk/", {
             headers: {
                 cookie: `reddit_session=${cookie}`
             }
@@ -312,7 +312,7 @@ async function attemptPlace(accessTokenHolder) {
 
 function place(x, y, color, accessToken = defaultAccessToken) {
     socket.send(JSON.stringify({ type: 'placepixel', x, y, color }));
-    return fetch('https://gql-realtime-2.reddit.com/query', {
+    return fetch('https://gql-realtime-2.replace.tk/query', {
         method: 'POST',
         body: JSON.stringify({
             'operationName': 'setPixel',
@@ -335,7 +335,7 @@ function place(x, y, color, accessToken = defaultAccessToken) {
             'origin': 'https://hot-potato.reddit.com',
             'referer': 'https://hot-potato.reddit.com/',
             'apollographql-client-name': 'mona-lisa',
-            'Authorization': `Bearer ${accessToken}`,
+            // 'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
             'User-Agent': CHOSEN_AGENT
         }
@@ -344,7 +344,7 @@ function place(x, y, color, accessToken = defaultAccessToken) {
 
 async function getCurrentImageUrl(id = '0') {
     return new Promise((resolve, reject) => {
-        const ws = new WebSocket('wss://gql-realtime-2.reddit.com/query', 'graphql-ws', {
+        const ws = new WebSocket('wss://gql-realtime-2.replace.tk/query', 'graphql-ws', {
             headers: {
                 "User-Agent": CHOSEN_AGENT,
                 "Origin": "https://hot-potato.reddit.com"
@@ -353,10 +353,10 @@ async function getCurrentImageUrl(id = '0') {
 
         ws.onopen = () => {
             ws.send(JSON.stringify({
-                'type': 'connection_init',
-                'payload': {
-                    'Authorization': `Bearer ${defaultAccessToken}`
-                }
+                'type': 'connection_init'
+                // 'payload': {
+                //     'Authorization': `Bearer ${defaultAccessToken}`
+                // }
             }));
 
             ws.send(JSON.stringify({
