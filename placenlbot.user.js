@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         PlaceNL Bot
-// @namespace    https://github.com/PlaceNL/Bot
+// @namespace    https://github.com/Stanned/Bot
 // @version      30
 // @description  De bot voor PlaceNL!
-// @author       NoahvdAa
+// @author       StanEXE
 // @match        https://rplace.tk/*
 // @connect      rplace.tk
 // @connect      placenl.noahvdaa.me
