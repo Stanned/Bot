@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PlaceNL Bot
 // @namespace    https://github.com/PlaceNL/Bot
-// @version      26
+// @version      27
 // @description  De bot voor PlaceNL!
 // @author       NoahvdAa
 // @match        https://rplace.tk/*
