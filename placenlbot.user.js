@@ -4,9 +4,8 @@
 // @version      26
 // @description  De bot voor PlaceNL!
 // @author       NoahvdAa
-// @match        https://www.reddit.com/r/place/*
-// @match        https://new.reddit.com/r/place/*
-// @connect      reddit.com
+// @match        https://rplace.tk/*
+// @connect      rplace.tk
 // @connect      placenl.noahvdaa.me
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
@@ -262,7 +261,7 @@ async function attemptPlace() {
 
 function place(x, y, color) {
     socket.send(JSON.stringify({ type: 'placepixel', x, y, color }));
-    return fetch('https://gql-realtime-2.reddit.com/query', {
+    return fetch('https://gql-realtime-2.rplace.tk/query', {
         method: 'POST',
         body: JSON.stringify({
             'operationName': 'setPixel',
@@ -299,19 +298,19 @@ function getCanvas(x, y) {
     }
 }
 
-async function getAccessToken() {
-    const usingOldReddit = window.location.href.includes('new.reddit.com');
-    const url = usingOldReddit ? 'https://new.reddit.com/r/place/' : 'https://www.reddit.com/r/place/';
-    const response = await fetch(url);
-    const responseText = await response.text();
-
-    // TODO: ew
-    return responseText.split('\"accessToken\":\"')[1].split('"')[0];
-}
+// async function getAccessToken() {
+//     const usingOldReddit = window.location.href.includes('new.reddit.com');
+//     const url = usingOldReddit ? 'https://new.reddit.com/r/place/' : 'https://www.reddit.com/r/place/';
+//     const response = await fetch(url);
+//     const responseText = await response.text();
+//
+//     // TODO: ew
+//     return responseText.split('\"accessToken\":\"')[1].split('"')[0];
+// }
 
 async function getCurrentImageUrl(id = '0') {
     return new Promise((resolve, reject) => {
-        const ws = new WebSocket('wss://gql-realtime-2.reddit.com/query', 'graphql-ws');
+        const ws = new WebSocket('wss://gql-realtime-2.rplace.tk/query', 'graphql-ws');
 
         ws.onopen = () => {
             ws.send(JSON.stringify({
